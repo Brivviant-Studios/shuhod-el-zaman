@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0805">
-  <title>شهود الزمن — الموسم الأول</title>
+  <title>شهود الزمن — ثلاثة مواسم</title>
   <style>
     :root{
       --ink:#0b0805;--bg:#130d08;--panel:#1b120b;--paper:#f8efe0;
@@ -111,6 +111,17 @@
       .preview-layout{grid-template-columns:1fr}.preview-copy{order:-1}.watch-now{width:100%}.watch-modal{padding:12px}.modal-card{width:100%}
       .footer-note{bottom:14px}.scroll-cue{display:none}
     }
+
+    .season-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+    .season-layout .era-card{padding:24px 26px}
+    .season-layout .episodes li{font-size:15px;min-height:39px}
+    .season-story{padding:12px 0}
+    .season-story .lead{font-size:21px;line-height:1.95}
+    .ending-note{margin-top:26px;padding:24px;border:1px solid rgba(216,173,91,.28);border-radius:18px;background:rgba(216,173,91,.07)}
+    .ending-note h3{color:var(--gold-2);font-size:19px;margin:0 0 12px}
+    .ending-note p{font-size:17px;line-height:1.95;margin:0;color:#e7d9c2}
+    @media(max-width:980px){.nav a{padding:8px;font-size:11px}}
+    @media(max-width:680px){.season-layout{grid-template-columns:1fr;gap:20px}.season-story{order:-1}.season-story .lead{font-size:18px}.ending-note{margin-top:18px;padding:18px}.ending-note p{font-size:15px}.season-layout .era-card{padding:20px}}
   </style>
 </head>
 <body>
@@ -121,9 +132,11 @@
         <a href="#cover" class="active">الغلاف</a>
         <a href="#about">نبذة</a>
         <a href="#season-one">الموسم الأول</a>
+        <a href="#season-two">الموسم الثاني</a>
+        <a href="#season-three">الموسم الثالث</a>
         <a href="#watch">المشاهدة</a>
       </nav>
-      <span class="slide-no">01 / 04</span>
+      <span class="slide-no">01 / 06</span>
     </div>
   </header>
 
@@ -134,7 +147,7 @@
           <div class="eyebrow">سلسلة تاريخية وثائقية درامية</div>
           <h1>شهود<br>الزمن</h1>
           <h2>لكل زمنٍ قصة… ولكل قصةٍ شاهد.</h2>
-          <p>عرض مختصر للمحتوى والموسم الأول، مع حلقة مشاهدة متاحة من السلسلة.</p>
+          <p>ثلاثة مواسم، وثلاثون حلقة: من نشأة القوة إلى الفتوح الكبرى واتساع الآفاق، مع حلقة مشاهدة متاحة من السلسلة.</p>
           <div class="hero-actions">
             <a class="primary" href="#about">استكشف السلسلة <span>←</span></a>
             <button class="secondary" type="button" data-watch-video>شاهد حلقة بدر</button>
@@ -151,12 +164,12 @@
           <h2 class="section-title">التاريخ كما لو أنك أحد شهوده</h2>
           <p class="lead">«شهود الزمن» سلسلة تاريخية وثائقية درامية تأخذ المشاهد في رحلة ممتدة عبر أهم المراحل والأحداث التي صنعت التاريخ، وتعيد تقديمها بأسلوب قصصي وبصري يجعل المشاهد أقرب إلى الحدث وكأنه أحد شهوده.</p>
           <p class="support">تتناول السلسلة صعود وسقوط الدول والإمبراطوريات، والمعارك الفاصلة التي غيّرت موازين القوى، والتحولات السياسية والاجتماعية الكبرى، إلى جانب الشخصيات التي كان لها تأثير مباشر في تغيير مسار التاريخ. ويُقدَّم كل ذلك بصورة مبسطة ومترابطة تجمع بين المعلومة التاريخية والسرد المشوق، بحيث لا تكون الأحداث مجرد تواريخ وأسماء، بل قصة متكاملة لها أسبابها وصراعاتها ونتائجها.</p>
-          <p class="support" style="margin-top:14px">يتكون «شهود الزمن» من عدة مواسم، يركز كل موسم منها على حقبة أو مرحلة تاريخية محددة، ويضم كل موسم 30 حلقة مترابطة زمنيًا تبدأ من جذور الأحداث وتطورها، وصولًا إلى أبرز نقاط التحول والنتائج التي تركت أثرها على ما جاء بعدها.</p>
+          <p class="support" style="margin-top:14px">تتوزع الحلقات الثلاثون في هذا العرض على ثلاثة مواسم، يضم كل منها 10 حلقات: «نشأة القوة»، و«الفتوح الكبرى»، و«اتساع الآفاق». يقوم التقسيم على مسار الحكاية وتحولات الأحداث، ولكل موسم فكرة واضحة ونهاية تمهّد لما بعدها، وصولًا إلى خاتمة الرحلة بتأمين الثغور.</p>
           <p class="support" style="margin-top:14px">الهدف من السلسلة ليس فقط سرد ما حدث، بل فهم كيف ولماذا حدث؛ من خلال وضع المشاهد داخل السياق التاريخي الكامل وربط الأسباب بالنتائج، ليخرج في نهاية كل موسم بصورة واضحة ومتكاملة عن الحقبة التي تناولها.</p>
         </div>
         <div class="fact-grid" aria-label="معلومات السلسلة">
-          <div class="fact"><strong>01</strong><span>موسم متاح حاليًا<br>الموسم الأول</span></div>
-          <div class="fact"><strong>30</strong><span>حلقة في<br>الموسم الأول</span></div>
+          <div class="fact"><strong>03</strong><span>مواسم في هذا العرض<br>30 حلقة إجمالًا</span></div>
+          <div class="fact"><strong>10</strong><span>حلقات في<br>كل موسم</span></div>
           <div class="fact wide">
             <strong>متاح باللهجتين</strong>
             <div class="dialects"><b>المصرية</b><b>السعودية</b></div>
@@ -168,70 +181,70 @@
     <section class="slide season" id="season-one" data-slide="03">
       <div class="shell">
         <div class="season-head">
-          <div>
-            <div class="section-kicker">الموسم المتاح حاليًا</div>
-            <h2 class="section-title">الموسم الأول</h2>
-            <p>ثلاثون حلقة مترابطة زمنيًا، موزعة على أربع مراحل تاريخية. أسماء الحلقات فقط، وحلقة بدر متاحة للمشاهدة.</p>
-          </div>
-          <div class="season-badge"><strong>30</strong> حلقة</div>
+          <div><div class="section-kicker">الموسم الأول</div><h2 class="section-title">نشأة القوة</h2><p>من بدر إلى بدايات الفتوح في العراق.</p></div>
+          <div class="season-badge"><strong>10</strong> حلقات</div>
         </div>
-
-        <div class="era-grid">
-          <article class="era-card">
-            <h3>العهد النبوي</h3><div class="era-count">7 حلقات</div>
-            <ol class="episodes" style="--start:0">
-              <li class="watch-item"><button class="episode-watch-button" type="button" data-watch-video><span>بدر: يوم الفرقان</span><small>شاهد الآن</small></button></li>
-              <li>أُحد: الزلزال</li>
-              <li>الخندق: صدمة الأحزاب</li>
-              <li>مؤتة: الراية المنصوبة</li>
-              <li>فتح مكة: عفو الملوك</li>
-              <li>حنين: اختبار القلوب</li>
-              <li>خيبر: كسر الحصون</li>
-            </ol>
-          </article>
-          <article class="era-card">
-            <h3>عهد أبي بكر الصديق</h3><div class="era-count">4 حلقات</div>
-            <ol class="episodes" style="--start:7">
-              <li>اليمامة: حديقة الموت</li>
-              <li>ذات السلاسل: الصدام الأول</li>
-              <li>أليس: نهر الدم</li>
-              <li>الفِرَاض: تحالف الجحيم</li>
-            </ol>
-          </article>
-          <article class="era-card">
-            <h3>عهد عمر بن الخطاب</h3><div class="era-count">11 حلقة</div>
-            <ol class="episodes" style="--start:11">
-              <li>أجنادين: كسر الهيبة</li>
-              <li>اليرموك: زلزال روما</li>
-              <li>فتح دمشق: سقوط الأسوار</li>
-              <li>الجسر: غدر الأعاجم</li>
-              <li>القادسية: ليلة الهرير</li>
-              <li>مدائن كسرى: سقوط الإيوان</li>
-              <li>جلولاء: مطاردة الذئاب</li>
-              <li>نهاوند: فتح الفتوح</li>
-              <li>فتح مصر: دهاء الوادي</li>
-              <li>قيسارية: الساحل الأخير</li>
-              <li>تستر: صيد الهرمزان</li>
-            </ol>
-          </article>
-          <article class="era-card">
-            <h3>عهد عثمان بن عفان</h3><div class="era-count">8 حلقات</div>
-            <ol class="episodes" style="--start:22">
-              <li>ذات الصواري: عرش البحار</li>
-              <li>إفريقية: طوفان القارة</li>
-              <li>قبرص: سيد البحار</li>
-              <li>الإصطخر: العصيان الأخير</li>
-              <li>خراسان: تخوم الشرق</li>
-              <li>القوقاز: حرب الثلوج</li>
-              <li>طبرستان: جبال الموت</li>
-              <li>تأمين الثغور: الدرع الأخير</li>
-            </ol>
-          </article>
+        <div class="season-layout">
+          <article class="era-card"><h3>حلقات الموسم الأول</h3><div class="era-count">10 حلقات · بدر ← أُلّيس</div><ol class="episodes" style="--start:0"><li class="watch-item"><button class="episode-watch-button" type="button" data-watch-video><span>بدر: يوم الفرقان</span><small>شاهد الآن</small></button></li>
+<li>أُحد: الزلزال</li>
+<li>الخندق: صدمة الأحزاب</li>
+<li>مؤتة: الراية المنصوبة</li>
+<li>فتح مكة: عفو الملوك</li>
+<li>حنين: اختبار القلوب</li>
+<li>خيبر: كسر الحصون</li>
+<li>اليمامة: حديقة الموت</li>
+<li>ذات السلاسل: الصدام الأول</li>
+<li>أليس: نهر الدم</li></ol></article>
+          <div class="season-story"><div class="section-kicker">فكرة الموسم</div><p class="lead">يتناول الموسم بناء القوة العسكرية في العهد النبوي، ثم التحديات بعد وفاة النبي ﷺ، وصولًا إلى المواجهات الأولى خارج الجزيرة العربية.</p><div class="ending-note"><h3>منطق النهاية</h3><p>يبدأ الموسم ببدر، وينتهي بأُلّيس بعد انتقال الأحداث من معارك الجزيرة العربية إلى جبهة العراق؛ لتكتمل مرحلة نشأة القوة ويتهيأ المشاهد لاتساع الفتوح في الموسم التالي.</p></div></div>
         </div>
       </div>
     </section>
 
-    <section class="slide preview" id="watch" data-slide="04">
+    <section class="slide season" id="season-two" data-slide="04">
+      <div class="shell">
+        <div class="season-head">
+          <div><div class="section-kicker">الموسم الثاني</div><h2 class="section-title">الفتوح الكبرى</h2><p>معارك التحول في العراق والشام ومصر.</p></div>
+          <div class="season-badge"><strong>10</strong> حلقات</div>
+        </div>
+        <div class="season-layout">
+          <article class="era-card"><h3>حلقات الموسم الثاني</h3><div class="era-count">10 حلقات · الفِراض ← فتح مصر</div><ol class="episodes" style="--start:0"><li>الفِرَاض: تحالف الجحيم</li>
+<li>أجنادين: كسر الهيبة</li>
+<li>اليرموك: زلزال روما</li>
+<li>فتح دمشق: سقوط الأسوار</li>
+<li>الجسر: غدر الأعاجم</li>
+<li>القادسية: ليلة الهرير</li>
+<li>مدائن كسرى: سقوط الإيوان</li>
+<li>جلولاء: مطاردة الذئاب</li>
+<li>نهاوند: فتح الفتوح</li>
+<li>فتح مصر: دهاء الوادي</li></ol></article>
+          <div class="season-story"><div class="section-kicker">فكرة الموسم</div><p class="lead">يركز الموسم على المواجهات الكبرى التي غيّرت موازين القوى، من الفِراض وأجنادين إلى اليرموك والقادسية وفتح المدائن ونهاوند، وصولًا إلى فتح مصر.</p><div class="ending-note"><h3>منطق النهاية</h3><p>يُختتم الموسم بفتح مصر بوصفه محطة بارزة في اتساع الفتوح، ونهاية تفتح الباب للانتقال إلى شمال أفريقيا والبحر المتوسط في الموسم التالي.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide season" id="season-three" data-slide="05">
+      <div class="shell">
+        <div class="season-head">
+          <div><div class="section-kicker">الموسم الثالث</div><h2 class="section-title">اتساع الآفاق</h2><p>من استكمال الفتوح البرية إلى البحر والجبهات البعيدة.</p></div>
+          <div class="season-badge"><strong>10</strong> حلقات</div>
+        </div>
+        <div class="season-layout">
+          <article class="era-card"><h3>حلقات الموسم الثالث</h3><div class="era-count">10 حلقات · قيسارية ← تأمين الثغور</div><ol class="episodes" style="--start:0"><li>قيسارية: الساحل الأخير</li>
+<li>تستر: صيد الهرمزان</li>
+<li>ذات الصواري: عرش البحار</li>
+<li>إفريقية: طوفان القارة</li>
+<li>قبرص: سيد البحار</li>
+<li>الإصطخر: العصيان الأخير</li>
+<li>خراسان: تخوم الشرق</li>
+<li>القوقاز: حرب الثلوج</li>
+<li>طبرستان: جبال الموت</li>
+<li>تأمين الثغور: الدرع الأخير</li></ol></article>
+          <div class="season-story"><div class="section-kicker">فكرة الموسم</div><p class="lead">يوسّع الموسم نطاق الحكاية: استكمال فتح المدن والحصون، وظهور القوة البحرية، ثم الحملات على جبهات متعددة، وصولًا إلى تأمين الحدود.</p><div class="ending-note"><h3>منطق النهاية</h3><p>تأتي «تأمين الثغور» خاتمةً للموسم وللمواسم الثلاثة؛ إذ تنتقل الحكاية من التوسع إلى حماية ما تحقق، وتُختتم الرحلة بفكرة صون الدولة وتأمين حدودها.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide preview" id="watch" data-slide="06">
       <div class="shell preview-layout">
         <div class="poster" aria-label="غلاف حلقة بدر">
           <div class="poster-copy"><span>الموسم الأول · الحلقة 01</span><h3>بدر: يوم الفرقان</h3></div>
@@ -239,7 +252,7 @@
         <div class="preview-copy">
           <div class="section-kicker">حلقة مشاهدة متاحة</div>
           <h2 class="section-title">شاهد حلقة بدر</h2>
-          <p>نموذج مشاهدة من الموسم الأول. اضغط على الزر لفتح الفيديو وتشغيله مباشرة داخل العرض.</p>
+          <p>نموذج مشاهدة من الموسم الأول «نشأة القوة». اضغط على الزر لفتح الفيديو وتشغيله مباشرة داخل العرض.</p>
           <button class="primary watch-now" type="button" data-watch-video><span class="play-icon">▶</span> تشغيل الحلقة</button>
         </div>
       </div>
