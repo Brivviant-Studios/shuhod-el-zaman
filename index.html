@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0805">
+  <title>شهود الزمن — الموسم الأول</title>
+  <style>
+    :root{
+      --ink:#0b0805;--bg:#130d08;--panel:#1b120b;--paper:#f8efe0;
+      --muted:#cdbb9d;--gold:#d8ad5b;--gold-2:#f2cf86;
+      --line:rgba(255,255,255,.11);--shadow:0 24px 70px rgba(0,0,0,.34)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+    body{margin:0;background:var(--ink);color:var(--paper);font-family:Tahoma,"Segoe UI",Arial,sans-serif;overflow-x:hidden}
+    button,a{font:inherit}button{cursor:pointer}
+    .slide{position:relative;min-height:100vh;min-height:100svh;scroll-snap-align:start;overflow:hidden;border-bottom:1px solid var(--line)}
+    .shell{width:min(1180px,calc(100% - 44px));margin:auto;position:relative;z-index:2}
+    .topbar{position:fixed;z-index:20;top:0;right:0;left:0;padding:18px 0;background:linear-gradient(to bottom,rgba(8,5,3,.9),transparent);pointer-events:none}
+    .topbar-inner{width:min(1180px,calc(100% - 44px));margin:auto;display:flex;justify-content:space-between;align-items:center;gap:18px;pointer-events:auto}
+    .brand{color:var(--paper);text-decoration:none;font-weight:900;letter-spacing:-.02em}
+    .nav{display:flex;gap:7px;padding:5px;border:1px solid var(--line);border-radius:999px;background:rgba(12,8,5,.55);backdrop-filter:blur(14px)}
+    .nav a{color:#d8c8ae;text-decoration:none;font-size:12px;padding:8px 12px;border-radius:999px;transition:.2s}
+    .nav a:hover,.nav a.active{background:rgba(216,173,91,.17);color:var(--gold-2)}
+    .slide-no{direction:ltr;color:var(--gold-2);font-size:12px;font-weight:800}
+
+    .hero{display:flex;align-items:center;background:#080604}
+    .hero:before{content:"";position:absolute;top:0;bottom:0;left:0;width:100%;background:url('assets/hero-banner.webp') center center/cover no-repeat}
+    .hero:after{content:"";position:absolute;top:0;bottom:0;left:0;width:100%;background:linear-gradient(90deg,rgba(8,6,4,0) 28%,rgba(8,6,4,.18) 48%,rgba(8,6,4,.64) 72%,rgba(8,6,4,.88) 100%);pointer-events:none}
+    .hero-copy{width:min(590px,44%);padding:120px 0 90px;margin-left:auto;margin-right:0}
+    .eyebrow{display:flex;align-items:center;gap:12px;color:var(--gold-2);font-size:13px;font-weight:800;margin-bottom:16px}
+    .eyebrow:before{content:"";width:52px;height:1px;background:var(--gold)}
+    h1{font-size:clamp(58px,8vw,112px);line-height:.9;margin:0;letter-spacing:-.065em;color:#fff8ec;text-shadow:0 10px 40px rgba(0,0,0,.48)}
+    .hero h2{font-size:clamp(22px,2.7vw,38px);margin:20px 0 12px;color:var(--gold-2)}
+    .hero p{max-width:630px;margin:0 0 28px;color:#eadcc7;font-size:clamp(15px,1.4vw,19px);line-height:1.9}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+    .primary,.secondary{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:12px;padding:13px 18px;text-decoration:none;font-weight:900;transition:.2s}
+    .primary{border:0;background:linear-gradient(135deg,#edc875,#b98231);color:#160f08;box-shadow:0 16px 34px rgba(0,0,0,.28)}
+    .secondary{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);color:var(--paper)}
+    .primary:hover,.secondary:hover{transform:translateY(-2px)}
+    .scroll-cue{position:absolute;z-index:4;bottom:22px;left:50%;transform:translateX(-50%);display:grid;place-items:center;gap:5px;color:rgba(242,207,134,.72);font-size:11px}
+    .scroll-cue b{font-size:19px;animation:bob 1.8s ease-in-out infinite}
+    @keyframes bob{50%{transform:translateY(5px)}}
+
+    .about{display:flex;align-items:center;background:radial-gradient(circle at 85% 15%,rgba(216,173,91,.14),transparent 32%),linear-gradient(145deg,#160f09,#0b0805 70%)}
+    .section-kicker{color:var(--gold-2);font-size:13px;font-weight:900;margin-bottom:10px}
+    .section-title{font-size:clamp(38px,5.8vw,76px);line-height:1.05;margin:0 0 20px;letter-spacing:-.045em}
+    .about-layout{display:grid;grid-template-columns:1.16fr .84fr;gap:60px;align-items:center;padding:120px 0 80px}
+    .lead{font-size:clamp(17px,1.65vw,23px);line-height:1.95;color:#eee0c9;margin:0 0 18px}
+    .support{font-size:15px;line-height:1.9;color:var(--muted);margin:0;max-width:720px}
+    .fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .fact{min-height:150px;padding:22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:var(--shadow)}
+    .fact strong{display:block;font-size:42px;line-height:1;color:var(--gold-2);margin-bottom:12px}
+    .fact span{display:block;color:#e7d9c2;font-size:14px;line-height:1.6}
+    .fact.wide{grid-column:1/-1;min-height:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .fact.wide strong{font-size:24px;margin:0}
+    .dialects{display:flex;gap:8px;flex-wrap:wrap}.dialects b{color:#160f08;background:var(--gold-2);padding:7px 10px;border-radius:999px;font-size:12px}
+
+    .season{background:linear-gradient(180deg,#0b0805,#150e08 48%,#0b0805)}
+    .season .shell{padding:110px 0 72px}
+    .season-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:30px}
+    .season-head p{max-width:640px;color:var(--muted);line-height:1.8;margin:0}
+    .season-badge{white-space:nowrap;border:1px solid rgba(216,173,91,.28);border-radius:16px;padding:14px 18px;background:rgba(216,173,91,.08);color:var(--gold-2)}
+    .season-badge strong{font-size:30px;margin-left:6px}
+    .era-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+    .era-card{border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));padding:20px 18px;box-shadow:0 18px 44px rgba(0,0,0,.18)}
+    .era-card h3{margin:0 0 6px;font-size:19px;color:#fff4e2}.era-count{color:#a99474;font-size:11px;margin-bottom:14px}
+    .episodes{list-style:none;padding:0;margin:0;display:grid;gap:3px;counter-reset:episode var(--start)}
+    .episodes li{counter-increment:episode;min-height:35px;display:flex;align-items:flex-start;gap:9px;padding:7px 6px;border-radius:9px;color:#d7c7ad;font-size:12px;line-height:1.55}
+    .episodes li:before{content:counter(episode,decimal-leading-zero);direction:ltr;min-width:22px;color:#866f4d;font-size:10px;padding-top:2px}
+    .episodes .watch-item{padding:0;border:1px solid rgba(216,173,91,.34);background:rgba(216,173,91,.1);overflow:hidden}
+    .episodes .watch-item:before{padding:9px 0 0 6px}
+    .episode-watch-button{flex:1;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:right;border:0;background:transparent;color:var(--gold-2);padding:7px 8px 7px 3px;font-weight:900}
+    .episode-watch-button small{white-space:nowrap;background:var(--gold-2);color:#160f08;padding:4px 7px;border-radius:999px;font-size:9px}
+
+    .preview{display:flex;align-items:center;background:radial-gradient(circle at 20% 40%,rgba(216,173,91,.11),transparent 36%),#0b0805}
+    .preview-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;padding:120px 0 88px}
+    .poster{position:relative;min-height:520px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#21160e url('assets/ep01.webp') center/cover no-repeat;box-shadow:var(--shadow)}
+    .poster:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,5,3,.96),rgba(8,5,3,.08) 65%)}
+    .poster-copy{position:absolute;z-index:2;right:28px;left:28px;bottom:28px}.poster-copy span{color:var(--gold-2);font-size:12px;font-weight:900}.poster-copy h3{font-size:36px;margin:8px 0 0}
+    .preview-copy p{font-size:18px;color:var(--muted);line-height:1.9;max-width:560px;margin:0 0 24px}
+    .watch-now{border:0;min-width:210px}
+    .play-icon{width:27px;height:27px;display:grid;place-items:center;border-radius:50%;background:#160f08;color:var(--gold-2);font-size:11px}
+    .footer-note{position:absolute;bottom:22px;right:50%;transform:translateX(50%);font-size:11px;color:#8e7c63;direction:ltr}
+
+    .watch-modal{position:fixed;z-index:100;inset:0;display:none;align-items:center;justify-content:center;padding:28px;background:rgba(0,0,0,.9);backdrop-filter:blur(10px)}
+    .watch-modal.open{display:flex}
+    .modal-card{width:min(1180px,100%);position:relative}
+    .modal-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:12px}
+    .modal-title{font-weight:900;color:#fff4e3}.modal-title small{display:block;color:var(--gold-2);font-size:11px;margin-bottom:4px}
+    .close-modal{border:1px solid var(--line);background:rgba(255,255,255,.08);color:#fff;width:42px;height:42px;border-radius:50%;font-size:20px}
+    .video-frame{position:relative;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#000;box-shadow:0 26px 80px rgba(0,0,0,.7)}
+    .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .video-fallback{display:flex;justify-content:center;margin-top:12px}.video-fallback a{color:var(--gold-2);font-size:12px}
+    body.modal-open{overflow:hidden}
+
+    @media(max-width:980px){
+      .about-layout,.preview-layout{grid-template-columns:1fr;gap:35px}
+      .era-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .hero-copy{width:min(690px,72%)}.poster{min-height:430px}
+    }
+    @media(max-width:680px){
+      html{scroll-snap-type:none}.shell,.topbar-inner{width:min(100% - 26px,1180px)}
+      .nav{display:none}.topbar{padding:14px 0}.hero{align-items:flex-end}
+      .hero:before{top:0;bottom:auto;left:0;width:100%;height:54vh;background-position:center 20%}
+      .hero:after{top:36vh;bottom:auto;left:0;width:100%;height:22vh;background:linear-gradient(to bottom,transparent,#080604 88%)}
+      .hero-copy{width:auto;padding:56vh 0 78px;margin:0}.hero p{font-size:14px;line-height:1.75}.hero-actions{width:100%}.hero-actions a{flex:1}
+      .about-layout,.season .shell,.preview-layout{padding:90px 0 62px}.fact-grid{grid-template-columns:1fr}.fact.wide{grid-column:auto;align-items:flex-start;flex-direction:column}
+      .season-head{align-items:flex-start;flex-direction:column}.era-grid{grid-template-columns:1fr}.section-title{font-size:42px}.poster{min-height:390px}
+      .preview-layout{grid-template-columns:1fr}.preview-copy{order:-1}.watch-now{width:100%}.watch-modal{padding:12px}.modal-card{width:100%}
+      .footer-note{bottom:14px}.scroll-cue{display:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#cover">شهود الزمن</a>
+      <nav class="nav" aria-label="أقسام العرض">
+        <a href="#cover" class="active">الغلاف</a>
+        <a href="#about">نبذة</a>
+        <a href="#season-one">الموسم الأول</a>
+        <a href="#watch">المشاهدة</a>
+      </nav>
+      <span class="slide-no">01 / 04</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="slide hero" id="cover" data-slide="01">
+      <div class="shell">
+        <div class="hero-copy">
+          <div class="eyebrow">سلسلة تاريخية وثائقية درامية</div>
+          <h1>شهود<br>الزمن</h1>
+          <h2>لكل زمنٍ قصة… ولكل قصةٍ شاهد.</h2>
+          <p>عرض مختصر للمحتوى والموسم الأول، مع حلقة مشاهدة متاحة من السلسلة.</p>
+          <div class="hero-actions">
+            <a class="primary" href="#about">استكشف السلسلة <span>←</span></a>
+            <button class="secondary" type="button" data-watch-video>شاهد حلقة بدر</button>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-cue">مرّر للمتابعة <b>↓</b></div>
+    </section>
+
+    <section class="slide about" id="about" data-slide="02">
+      <div class="shell about-layout">
+        <div>
+          <div class="section-kicker">عن السلسلة</div>
+          <h2 class="section-title">التاريخ كما لو أنك أحد شهوده</h2>
+          <p class="lead">«شهود الزمن» سلسلة تاريخية وثائقية درامية تأخذ المشاهد في رحلة ممتدة عبر أهم المراحل والأحداث التي صنعت التاريخ، وتعيد تقديمها بأسلوب قصصي وبصري يجعل المشاهد أقرب إلى الحدث وكأنه أحد شهوده.</p>
+          <p class="support">تتناول السلسلة صعود وسقوط الدول والإمبراطوريات، والمعارك الفاصلة التي غيّرت موازين القوى، والتحولات السياسية والاجتماعية الكبرى، إلى جانب الشخصيات التي كان لها تأثير مباشر في تغيير مسار التاريخ. ويُقدَّم كل ذلك بصورة مبسطة ومترابطة تجمع بين المعلومة التاريخية والسرد المشوق، بحيث لا تكون الأحداث مجرد تواريخ وأسماء، بل قصة متكاملة لها أسبابها وصراعاتها ونتائجها.</p>
+          <p class="support" style="margin-top:14px">يتكون «شهود الزمن» من عدة مواسم، يركز كل موسم منها على حقبة أو مرحلة تاريخية محددة، ويضم كل موسم 30 حلقة مترابطة زمنيًا تبدأ من جذور الأحداث وتطورها، وصولًا إلى أبرز نقاط التحول والنتائج التي تركت أثرها على ما جاء بعدها.</p>
+          <p class="support" style="margin-top:14px">الهدف من السلسلة ليس فقط سرد ما حدث، بل فهم كيف ولماذا حدث؛ من خلال وضع المشاهد داخل السياق التاريخي الكامل وربط الأسباب بالنتائج، ليخرج في نهاية كل موسم بصورة واضحة ومتكاملة عن الحقبة التي تناولها.</p>
+        </div>
+        <div class="fact-grid" aria-label="معلومات السلسلة">
+          <div class="fact"><strong>01</strong><span>موسم متاح حاليًا<br>الموسم الأول</span></div>
+          <div class="fact"><strong>30</strong><span>حلقة في<br>الموسم الأول</span></div>
+          <div class="fact wide">
+            <strong>متاح باللهجتين</strong>
+            <div class="dialects"><b>المصرية</b><b>السعودية</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide season" id="season-one" data-slide="03">
+      <div class="shell">
+        <div class="season-head">
+          <div>
+            <div class="section-kicker">الموسم المتاح حاليًا</div>
+            <h2 class="section-title">الموسم الأول</h2>
+            <p>ثلاثون حلقة مترابطة زمنيًا، موزعة على أربع مراحل تاريخية. أسماء الحلقات فقط، وحلقة بدر متاحة للمشاهدة.</p>
+          </div>
+          <div class="season-badge"><strong>30</strong> حلقة</div>
+        </div>
+
+        <div class="era-grid">
+          <article class="era-card">
+            <h3>العهد النبوي</h3><div class="era-count">7 حلقات</div>
+            <ol class="episodes" style="--start:0">
+              <li class="watch-item"><button class="episode-watch-button" type="button" data-watch-video><span>بدر: يوم الفرقان</span><small>شاهد الآن</small></button></li>
+              <li>أُحد: الزلزال</li>
+              <li>الخندق: صدمة الأحزاب</li>
+              <li>مؤتة: الراية المنصوبة</li>
+              <li>فتح مكة: عفو الملوك</li>
+              <li>حنين: اختبار القلوب</li>
+              <li>خيبر: كسر الحصون</li>
+            </ol>
+          </article>
+          <article class="era-card">
+            <h3>عهد أبي بكر الصديق</h3><div class="era-count">4 حلقات</div>
+            <ol class="episodes" style="--start:7">
+              <li>اليمامة: حديقة الموت</li>
+              <li>ذات السلاسل: الصدام الأول</li>
+              <li>أليس: نهر الدم</li>
+              <li>الفِرَاض: تحالف الجحيم</li>
+            </ol>
+          </article>
+          <article class="era-card">
+            <h3>عهد عمر بن الخطاب</h3><div class="era-count">11 حلقة</div>
+            <ol class="episodes" style="--start:11">
+              <li>أجنادين: كسر الهيبة</li>
+              <li>اليرموك: زلزال روما</li>
+              <li>فتح دمشق: سقوط الأسوار</li>
+              <li>الجسر: غدر الأعاجم</li>
+              <li>القادسية: ليلة الهرير</li>
+              <li>مدائن كسرى: سقوط الإيوان</li>
+              <li>جلولاء: مطاردة الذئاب</li>
+              <li>نهاوند: فتح الفتوح</li>
+              <li>فتح مصر: دهاء الوادي</li>
+              <li>قيسارية: الساحل الأخير</li>
+              <li>تستر: صيد الهرمزان</li>
+            </ol>
+          </article>
+          <article class="era-card">
+            <h3>عهد عثمان بن عفان</h3><div class="era-count">8 حلقات</div>
+            <ol class="episodes" style="--start:22">
+              <li>ذات الصواري: عرش البحار</li>
+              <li>إفريقية: طوفان القارة</li>
+              <li>قبرص: سيد البحار</li>
+              <li>الإصطخر: العصيان الأخير</li>
+              <li>خراسان: تخوم الشرق</li>
+              <li>القوقاز: حرب الثلوج</li>
+              <li>طبرستان: جبال الموت</li>
+              <li>تأمين الثغور: الدرع الأخير</li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide preview" id="watch" data-slide="04">
+      <div class="shell preview-layout">
+        <div class="poster" aria-label="غلاف حلقة بدر">
+          <div class="poster-copy"><span>الموسم الأول · الحلقة 01</span><h3>بدر: يوم الفرقان</h3></div>
+        </div>
+        <div class="preview-copy">
+          <div class="section-kicker">حلقة مشاهدة متاحة</div>
+          <h2 class="section-title">شاهد حلقة بدر</h2>
+          <p>نموذج مشاهدة من الموسم الأول. اضغط على الزر لفتح الفيديو وتشغيله مباشرة داخل العرض.</p>
+          <button class="primary watch-now" type="button" data-watch-video><span class="play-icon">▶</span> تشغيل الحلقة</button>
+        </div>
+      </div>
+      <div class="footer-note">Powered By Brivviant</div>
+    </section>
+  </main>
+
+  <div class="watch-modal" id="watchModal" role="dialog" aria-modal="true" aria-labelledby="watchModalTitle">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title" id="watchModalTitle"><small>شهود الزمن · الموسم الأول</small>بدر: يوم الفرقان</div>
+        <button class="close-modal" type="button" id="closeModal" aria-label="إغلاق الفيديو">×</button>
+      </div>
+      <div class="video-frame"><iframe id="episodeFrame" title="حلقة بدر: يوم الفرقان" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+      <div class="video-fallback"><a href="https://drive.google.com/file/d/18Q9lt2B-AXbOdOU2tJ---uFdEnp8nXHo/preview?autoplay=1" target="_blank" rel="noopener">فتح الفيديو في نافذة جديدة</a></div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const videoUrl='https://drive.google.com/file/d/18Q9lt2B-AXbOdOU2tJ---uFdEnp8nXHo/preview?autoplay=1';
+      const modal=document.getElementById('watchModal');
+      const frame=document.getElementById('episodeFrame');
+      const closeButton=document.getElementById('closeModal');
+      const triggers=document.querySelectorAll('[data-watch-video]');
+      const slides=[...document.querySelectorAll('.slide')];
+      const navLinks=[...document.querySelectorAll('.nav a')];
+      const slideNo=document.querySelector('.slide-no');
+      function openVideo(){
+        frame.src=videoUrl;modal.classList.add('open');
+        document.body.classList.add('modal-open');closeButton.focus()
+      }
+      function closeVideo(){
+        modal.classList.remove('open');document.body.classList.remove('modal-open');frame.src=''
+      }
+      triggers.forEach(button=>button.addEventListener('click',openVideo));
+      closeButton.addEventListener('click',closeVideo);
+      modal.addEventListener('click',event=>{if(event.target===modal) closeVideo()});
+      document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.classList.contains('open')) closeVideo()});
+      const observer=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(!entry.isIntersecting) return;
+          const index=slides.indexOf(entry.target);
+          slideNo.textContent=String(index+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+          navLinks.forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+entry.target.id))
+        })
+      },{threshold:.55});
+      slides.forEach(slide=>observer.observe(slide))
+    })();
+  </script>
+</body>
+</html>
